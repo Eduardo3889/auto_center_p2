@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Auto Center Marica - Entrega da Prova</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #17202a;
+        --muted: #5a6673;
+        --line: #d7dde4;
+        --brand: #0f6b5f;
+        --accent: #d94835;
+        --panel: #f7f9fb;
+        --white: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--ink);
+        background: var(--white);
+      }
+
+      header {
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(90deg, #f7f9fb 0%, #ffffff 62%, #eef5f3 100%);
+      }
+
+      .wrap {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .hero {
+        padding: 48px 0 36px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+        gap: 28px;
+        align-items: end;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(32px, 5vw, 58px);
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      .subtitle {
+        margin: 0;
+        max-width: 740px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.55;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 18px;
+        padding: 8px 10px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--white);
+        font-size: 14px;
+        color: var(--brand);
+        font-weight: 700;
+      }
+
+      .status {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+        padding: 18px;
+      }
+
+      .status strong {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 18px;
+      }
+
+      .status ul,
+      .checklist {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .status li,
+      .checklist li {
+        padding: 8px 0;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+      }
+
+      .status li:first-child,
+      .checklist li:first-child {
+        border-top: 0;
+      }
+
+      main {
+        padding: 32px 0 48px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        margin-bottom: 28px;
+      }
+
+      section {
+        padding: 22px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      h2 {
+        margin: 0 0 14px;
+        font-size: 24px;
+        letter-spacing: 0;
+      }
+
+      .service {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 16px;
+        background: var(--panel);
+      }
+
+      .service h3 {
+        margin: 0 0 8px;
+        font-size: 18px;
+      }
+
+      .service p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      code {
+        padding: 2px 5px;
+        border-radius: 4px;
+        background: #eef1f4;
+        font-size: 0.95em;
+      }
+
+      .commands {
+        margin: 0;
+        padding: 16px;
+        overflow-x: auto;
+        border-radius: 8px;
+        background: #17202a;
+        color: #f5f7f9;
+      }
+
+      a {
+        color: var(--brand);
+        font-weight: 700;
+      }
+
+      .accent {
+        color: var(--accent);
+      }
+
+      @media (max-width: 780px) {
+        .hero,
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding-top: 32px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap hero">
+        <div>
+          <div class="badge">Entrega pronta para conferencia</div>
+          <h1>Auto Center Marica</h1>
+          <p class="subtitle">
+            Solucao de software para uma oficina mecanica, com microsservicos,
+            Arquitetura Limpa, SOLID, Design Patterns, TDD, BDD, Docker e roteiro
+            de deploy.
+          </p>
+        </div>
+        <aside class="status" aria-label="Status da entrega">
+          <strong>Status da pasta</strong>
+          <ul>
+            <li>Documentacao tecnica incluida</li>
+            <li>Codigo dos microsservicos incluido</li>
+            <li>Testes TDD e BDD incluidos</li>
+            <li>Docker Compose e deploy incluidos</li>
+          </ul>
+        </aside>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section>
+        <h2>Microsservicos</h2>
+        <div class="grid">
+          <article class="service">
+            <h3>API Gateway <span class="accent">:8000</span></h3>
+            <p>Entrada unica da plataforma e aplicacao do pattern Facade.</p>
+          </article>
+          <article class="service">
+            <h3>Customer Vehicle Service <span class="accent">:8001</span></h3>
+            <p>Cadastro de clientes e veiculos da oficina.</p>
+          </article>
+          <article class="service">
+            <h3>Work Order Service <span class="accent">:8002</span></h3>
+            <p>Abertura de ordens de servico e calculo de prioridade.</p>
+          </article>
+          <article class="service">
+            <h3>Notification Service <span class="accent">:8003</span></h3>
+            <p>Registro de notificacoes simuladas para clientes.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Checklist da prova</h2>
+        <ul class="checklist">
+          <li>Descricao do problema escolhido: <code>README.md</code></li>
+          <li>Divisao em microsservicos: <code>README.md</code> e <code>docs/ARQUITETURA.md</code></li>
+          <li>Arquitetura Limpa: pastas <code>domain</code>, <code>application</code>, <code>infrastructure</code> e <code>interfaces</code></li>
+          <li>SOLID, Clean Code e Design Patterns: <code>docs/SOLID_CLEAN_CODE_PATTERNS.md</code></li>
+          <li>TDD e BDD: <code>docs/TDD_BDD.md</code>, <code>tests/</code> e <code>features/</code></li>
+          <li>Docker e deploy: <code>docker-compose.yml</code>, <code>Dockerfile</code> e <code>render.yaml</code></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Como rodar quando Docker estiver instalado</h2>
+        <pre class="commands">cd outputs/auto-center-marica-prova
+docker compose up --build</pre>
+      </section>
+
+      <section>
+        <h2>Arquivos principais</h2>
+        <p>
+          Comece por <a href="./README.md">README.md</a>,
+          <a href="./PROVA_RESUMO.md">PROVA_RESUMO.md</a> e
+          <a href="./docs/ARQUITETURA.md">docs/ARQUITETURA.md</a>.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
+

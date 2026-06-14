@@ -1,0 +1,51 @@
+services:
+  api-gateway:
+    build: ./services/api-gateway
+    ports:
+      - "8000:8000"
+    environment:
+      CUSTOMER_SERVICE_URL: http://customer-vehicle-service:8001
+      WORK_ORDER_SERVICE_URL: http://work-order-service:8002
+      NOTIFICATION_SERVICE_URL: http://notification-service:8003
+    depends_on:
+      customer-vehicle-service:
+        condition: service_healthy
+      work-order-service:
+        condition: service_healthy
+      notification-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health').read()"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+
+  customer-vehicle-service:
+    build: ./services/customer-vehicle-service
+    ports:
+      - "8001:8001"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8001/health').read()"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+
+  work-order-service:
+    build: ./services/work-order-service
+    ports:
+      - "8002:8002"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8002/health').read()"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+
+  notification-service:
+    build: ./services/notification-service
+    ports:
+      - "8003:8003"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8003/health').read()"]
+      interval: 20s
+      timeout: 5s
+      retries: 5

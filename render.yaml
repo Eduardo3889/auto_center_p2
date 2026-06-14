@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: auto-center-marica-gateway
+    runtime: docker
+    rootDir: services/api-gateway
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: CUSTOMER_SERVICE_URL
+        value: https://auto-center-marica-customers.onrender.com
+      - key: WORK_ORDER_SERVICE_URL
+        value: https://auto-center-marica-orders.onrender.com
+      - key: NOTIFICATION_SERVICE_URL
+        value: https://auto-center-marica-notifications.onrender.com
+
+  - type: web
+    name: auto-center-marica-customers
+    runtime: docker
+    rootDir: services/customer-vehicle-service
+    plan: free
+    healthCheckPath: /health
+
+  - type: web
+    name: auto-center-marica-orders
+    runtime: docker
+    rootDir: services/work-order-service
+    plan: free
+    healthCheckPath: /health
+
+  - type: web
+    name: auto-center-marica-notifications
+    runtime: docker
+    rootDir: services/notification-service
+    plan: free
+    healthCheckPath: /health
