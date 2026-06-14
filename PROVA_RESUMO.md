@@ -6,7 +6,7 @@ Sistema de gestao de atendimento para a oficina **Auto Center Marica**.
 
 ## Problema
 
-A oficina tem bastante dificuldade para controlar clientes, veiculos, ordens de servico e comunicacao com clientes usando planilhas e anotacoes manuais.
+A oficina tem bastante dificuldade para controlar clientes, veiculos, ordens de servico e comunicacao com clientes usando planilhas e anotacoes manuais,acaba atrapalhando e atrasando bastante o trabalho na oficina.
 
 ## Solucao
 
@@ -72,15 +72,11 @@ O arquivo `docker-compose.yml` sobe os quatro servicos.
 
 Comando:
 
-```bash
+bash
 docker compose up --build
-```
 
 O Compose tambem possui healthchecks para verificar se cada microsservico esta respondendo.
 
-## Deploy
-
-O arquivo `render.yaml` prepara a publicacao em Render. O link publico deve ser obtido apos conectar o projeto a uma conta de hospedagem.
 
 ## CI
 
