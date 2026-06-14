@@ -27,6 +27,17 @@ def context() -> dict:
     return {}
 
 
+def normalize_urgency(urgency: str) -> str:
+    urgency_by_language = {
+        "alta": "high",
+        "media": "medium",
+        "média": "medium",
+        "baixa": "low",
+    }
+    normalized = urgency.strip().lower()
+    return urgency_by_language.get(normalized, normalized)
+
+
 @given("um cliente com veiculo cadastrado")
 def customer_with_vehicle(context: dict) -> None:
     context["customer_id"] = "customer-001"
@@ -48,7 +59,7 @@ def create_order(context: dict, urgency: str) -> None:
         customer_id=context["customer_id"],
         vehicle_plate=context["vehicle_plate"],
         complaint="Barulho ao frear",
-        urgency=urgency,
+        urgency=normalize_urgency(urgency),
     )
 
 
@@ -67,7 +78,7 @@ def create_order_with_complaint(context: dict, urgency: str, complaint: str) -> 
         customer_id=context["customer_id"],
         vehicle_plate=context["vehicle_plate"],
         complaint=complaint,
-        urgency=urgency,
+        urgency=normalize_urgency(urgency),
     )
 
 
@@ -77,7 +88,7 @@ def order_should_have_high_priority(context: dict) -> None:
     assert context["work_order"].status == "opened"
 
 
-@then("a ordem deve ser criada com prioridade low")
+@then("a ordem deve ser criada com prioridade baixa")
 def order_should_have_low_priority(context: dict) -> None:
     assert context["work_order"].priority == "low"
     assert context["work_order"].status == "opened"

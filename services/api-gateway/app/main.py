@@ -20,6 +20,14 @@ def root() -> dict:
 
 
 @app.get("/health")
-async def health() -> dict:
-    return await gateway.health()
+def health() -> dict:
+    return {
+        "status": "ok",
+        "service": "api-gateway",
+        "workshop": "Auto Center Marica",
+    }
 
+
+@app.get("/services/health")
+async def services_health() -> dict:
+    return await gateway.health()
