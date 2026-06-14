@@ -1,10 +1,10 @@
-# Auto Center Marica - Solucao de Software para Oficina Mecanica
+# Auto Center Marica OS - Solucao de Software para Oficina Mecanica
 
 Tudo para demonstrar Clean Code, SOLID, Design Patterns, TDD, BDD, Arquitetura Limpa, Microsservicos, Docker e Deploy em servidor.
 
 ## 1. Problema escolhido
 
-A oficina mecanica ficticia **Auto Center Marica** atende clientes por telefone, WhatsApp e presencialmente. O controle de clientes, veiculos, orcamentos e ordens de servico ainda e feito em planilhas e anotacoes manuais.
+A oficina mecanica ficticia **Auto Center Marica** atende clientes por telefone, WhatsApp e presencialmente. O controle de clientes, veiculos, orcamentos e ordens de servico ainda e feito em planilhas e anotacoes manuais, acaba atrapalhando e atrasando bastante o trabalho na oficina.
 
 Esse processo gera alguns problemas que sao comuns:
 
@@ -88,19 +88,6 @@ app/
 | Docker | `Dockerfile` por servico, healthchecks e `docker-compose.yml` |
 | Deploy | `render.yaml`, CI e roteiro em `docs/DEPLOY.md` |
 
-## 6. Como executar localmente
-
-Requisitos:
-
-- Docker
-- Docker Compose
-
-Comandos:
-
-```bash
-docker compose up --build
-```
-
 URLs locais:
 
 - API Gateway: <http://localhost:8000/docs>
@@ -145,10 +132,9 @@ pytest
 
 Exemplo para BDD:
 
-```bash
+bash
 cd services/work-order-service
 pytest features
-```
 
 O projeto tambem possui workflow de CI em `.github/workflows/ci.yml` para executar testes automaticamente no GitHub Actions.
 
@@ -156,11 +142,15 @@ O projeto tambem possui workflow de CI em `.github/workflows/ci.yml` para execut
 
 Campo para entrega final apos deploy real:
 
-```text
+Sistema:
 https://auto-center-marica-gateway.onrender.com
-```
 
-Observacao: o arquivo `render.yaml` ja esta preparado para publicacao. Para que o link fique ativo, e necessario conectar este projeto a uma conta Render, Railway, AWS, Azure, Google Cloud ou similar. O roteiro completo esta em `docs/DEPLOY.md`.
+Documentacao Swagger:
+https://auto-center-marica-gateway.onrender.com/docs
+
+Health check:
+https://auto-center-marica-gateway.onrender.com/health
+
 
 ## 10. Evidencias de execucao
 
@@ -174,4 +164,4 @@ O arquivo `docs/EVIDENCIAS_EXECUCAO.md` lista os comandos e prints recomendados 
 
 ## 11. Justificativa tecnica resumida
 
-A arquitetura foi escolhida para separar regras de negocio da tecnologia utilizada. A oficina pode mudar banco de dados, provedor de deploy, mensageria ou framework HTTP sem reescrever o nucleo do sistema. A divisao em microsservicos permite evoluir cadastro, ordens de servico e notificacoes de forma independente, reduzindo acoplamento e facilitando manutencao.
+A arquitetura foi pensada para separar o que o sistema faz de como ele é executado.A arquitetura foi pensada para separar o que o sistema faz de como ele é executado. Isso significa que trocar o banco de dados, o servidor ou qualquer outra tecnologia não exige reescrever o sistema inteiro.
